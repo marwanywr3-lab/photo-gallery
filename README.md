@@ -32,4 +32,3 @@ gh api "repos/$galleryOwner/photo-gallery/pages/builds/latest"
 ```
 
 صور المعرض تُدار من قاعدة D1 وتخزين R2؛ لا تُضاف الصور إلى GitHub. إن لم توجد صور منشورة يعرض الموقع حالة فارغة واضحة.
-
