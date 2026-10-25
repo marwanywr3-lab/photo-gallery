@@ -1,5 +1,5 @@
 const API = 'https://photo-gallery-api-marwanywr3-lab.barboodmarwan.workers.dev';
-const STUDIO_URL = 'https://marwanywr3-lab.github.io/photo-gallery/';
+const STUDIO_URL = 'https://gallery.marwanbarbood.com/';
 const $ = id => document.getElementById(id);
 let photos = []; let next = 0; let query = ''; let active = null; let controller; let requestId = 0;
 let fullBlobUrl = null; let cardBlobUrl = null; let cardFile = null;

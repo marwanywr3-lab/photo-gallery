@@ -2,7 +2,7 @@
 
 موقع GitHub Pages عام مرتبط بخادم Cloudflare المستقل في المستودع الخاص `photo-gallery-admin`.
 
-- الرابط: https://marwanywr3-lab.github.io/photo-gallery/
+- الرابط: https://gallery.marwanbarbood.com/
 - الخادم: https://photo-gallery-api-marwanywr3-lab.barboodmarwan.workers.dev
 - تخطيط Masonry متجاوب، بحث خادمي في العنوان والوصف والوسوم، وتحميل صفحات متتابعة.
 - عرض بيانات الكاميرا فقط عند تفعيلها في الإدارة.
