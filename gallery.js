@@ -1,4 +1,4 @@
-import {locales} from './locales.js?v=20261025-2';
+import {locales} from './locales.js?v=20261025-3';
 const API = 'https://photo-gallery-api-marwanywr3-lab.barboodmarwan.workers.dev';
 const STUDIO_URL = 'https://gallery.marwanbarbood.com/';
 const $ = id => document.getElementById(id);
