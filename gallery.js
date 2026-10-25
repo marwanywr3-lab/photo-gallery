@@ -1,4 +1,4 @@
-import {locales} from './locales.js?v=20261025-1';
+import {locales} from './locales.js?v=20261025-2';
 const API = 'https://photo-gallery-api-marwanywr3-lab.barboodmarwan.workers.dev';
 const STUDIO_URL = 'https://gallery.marwanbarbood.com/';
 const $ = id => document.getElementById(id);
@@ -9,7 +9,7 @@ const preference={read(key){try{return localStorage.getItem(key);}catch{return n
 let language=preference.read('marwan-language')||'ar';if(!locales[language])language='ar';let statusKey='loading';
 const t=key=>locales[language].text[key]??locales.en.text[key]??key;
 function renderStatus(){$('status').textContent=statusKey==='ready'?(photos.length?`${new Intl.NumberFormat(language).format(photos.length)} ${t(photos.length===1?'shotsOne':'shots')}`:t('empty')):t(statusKey);$('more').textContent=t(statusKey==='loadError'?'retry':'more');}
-function applyLanguage(){document.documentElement.lang=language;document.documentElement.dir=locales[language].dir;document.title=`${t('studio')} | MARWAN Photography`;document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));$('language').value=language;$('language').setAttribute('aria-label',t('language'));$('theme').setAttribute('aria-label',t('theme'));$('close').setAttribute('aria-label',t('close'));$('close-card').setAttribute('aria-label',t('close'));$('card-preview').alt=t('cardAlt');for(const [index,button] of [...$('grid').children].entries())button.setAttribute('aria-label',`${t('view')} — ${photos[index].title}`);renderStatus();if(active&&$('viewer').open)view(active);}
+function applyLanguage(){document.documentElement.lang=language;document.documentElement.dir=locales[language].dir;document.title=`${t('studio')} | Photography`;document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));$('language').value=language;$('language').setAttribute('aria-label',t('language'));$('theme').setAttribute('aria-label',t('theme'));$('close').setAttribute('aria-label',t('close'));$('close-card').setAttribute('aria-label',t('close'));$('card-preview').alt=t('cardAlt');for(const [index,button] of [...$('grid').children].entries())button.setAttribute('aria-label',`${t('view')} — ${photos[index].title}`);renderStatus();if(active&&$('viewer').open)view(active);}
 for(const [code,locale] of Object.entries(locales)){const option=node('option',locale.name);option.value=code;$('language').append(option);}
 $('language').onchange=()=>{language=$('language').value;preference.save('marwan-language',language);applyLanguage();};
 function applyTheme(value){document.documentElement.dataset.theme=value;$('theme').value=value;document.querySelector('meta[name="theme-color"]').content=value==='light'?'#f7f5ee':'#10110f';}
@@ -69,7 +69,7 @@ $('share').onclick = async () => {
     ctx.save(); ctx.translate(540,540); ctx.rotate(-Math.PI/9); ctx.globalAlpha = .16; ctx.fillStyle = '#ffffff'; ctx.font = '600 88px Segoe UI'; ctx.textAlign = 'center'; ctx.fillText('@f_ioc',0,0); ctx.restore();
     ctx.fillStyle = '#d3dda9'; ctx.direction=locales[language].dir;ctx.textAlign=language==='ar'?'right':'left';ctx.font='40px Segoe UI'; textLines(ctx,active.title,930,2).forEach((line,i) => ctx.fillText(line,language==='ar'?1008:72,1080+i*52));
     ctx.strokeStyle = '#73845d'; ctx.beginPath(); ctx.moveTo(72,1190); ctx.lineTo(1008,1190); ctx.stroke();
-    ctx.direction = 'ltr'; ctx.textAlign = 'left'; ctx.fillStyle = '#e0e7d5'; ctx.font = '28px Segoe UI'; ctx.fillText('MARWAN / @f_ioc',72,1242);
+    ctx.direction = 'ltr'; ctx.textAlign = 'left'; ctx.fillStyle = '#e0e7d5'; ctx.font = '28px Segoe UI'; ctx.fillText('THE STUDIO / @f_ioc',72,1242);
     ctx.font = '20px Segoe UI'; ctx.fillStyle = '#9da98e'; ctx.fillText(STUDIO_URL.replace('https://',''),72,1295);
     ctx.direction = 'rtl'; ctx.textAlign = 'right'; ctx.font = '23px Segoe UI'; ctx.fillText(t('rights'),1008,1242);
     const blob = await new Promise((resolve,reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error(t('cardError'))),'image/jpeg',.94));
@@ -78,5 +78,5 @@ $('share').onclick = async () => {
   } catch (error) { $('share-status').textContent = error.message || t('cardError'); }
   finally { $('share').disabled = false; }
 };
-$('native-share').onclick = async () => { try { await navigator.share({files:[cardFile],title:active?.title,text:`MARWAN / @f_ioc — ${STUDIO_URL}`}); } catch (error) { if (error.name !== 'AbortError') $('share-status').textContent = t('saveHint'); } };
+$('native-share').onclick = async () => { try { await navigator.share({files:[cardFile],title:active?.title,text:`THE STUDIO / @f_ioc — ${STUDIO_URL}`}); } catch (error) { if (error.name !== 'AbortError') $('share-status').textContent = t('saveHint'); } };
 load(true);
